@@ -4,21 +4,26 @@ import Navbar from "../../components/Navbar";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 import { Container, Col, Row } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
+import UserCard from "../../components/UserCard";
+import "./Search.css";
 
 class Search extends Component {
   state = {
-    userSearch: ""
+    users: [],
+    currentUser: ""
   };
 
-handleSubmit = (e) =>{
-e.preventDefault()
+  componentDidMount = () => {
+    API.getUsers().then(res => this.setState({ users: res.data }));
+  };
 
-}
+  handleAdd = id => {
+    console.log(`friend id is ${id}`);
+    API.addFriend(id).then(data => console.log(data));
+  };
 
-componentDidMount(){
-  console.log(API.getUsers())
-}
+  handleChat = () => {};
+
   render() {
     return (
       <div>
@@ -32,13 +37,13 @@ componentDidMount(){
                   <Row>
                     <Col size="xs-9 sm-10">
                       <Input
-                        name="userSearch"
+                        name="bookSearch"
                         onChange={this.handleInput}
                         placeholder="Search for a shop or mate"
                       />
                     </Col>
                     <Col size="xs-3 sm-2">
-                      <FormBtn onClick={this.handleSubmit} />
+                      <FormBtn onClick={this.handleSubmitBook} />
                     </Col>
                   </Row>
                 </Container>
@@ -48,6 +53,15 @@ componentDidMount(){
           <br />
           <Container>
             <h4>Search Results:</h4>
+            <Row>
+              {this.state.users.map(user => {
+                return (
+                  <Col size="xs-12 sm-6 md-3">
+                    <UserCard info={user} handleAdd={this.handleAdd} />
+                  </Col>
+                );
+              })}
+            </Row>
           </Container>
         </Container>
       </div>

@@ -1,5 +1,15 @@
+.profilepage {
+  background-color: black;
+}
+
 .msg {
   text-align: center;
   font-size: 25px;
   width: 100%;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: rgba(158, 70, 19, 0.726);
+  border-color: #3a1f06;
 }

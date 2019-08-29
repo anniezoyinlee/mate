@@ -23,16 +23,24 @@ class Profile extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.name && this.state.image) {
+      API.createUser({ name: this.state.name, image: this.state.image });
       this.setState({
         name: "",
         image: "",
         msg: "Sign Up Successful!"
       });
-      API.createUser({ name: this.state.name, image: this.state.image });
-      console.log(this.state.name);
-      console.log(this.state.image);
+    } else if (this.state.name || !this.state.image) {
+      API.createUser({
+        name: this.state.name,
+        image: "https://via.placeholder.com/200"
+      });
+      this.setState({
+        name: "",
+        image: "",
+        msg: "Sign Up Successful!"
+      });
     } else {
-      this.setState({ msg: "Please Enter Both Fields!" });
+      this.setState({ msg: "Please Enter At Least Your Name!" });
     }
   };
 
