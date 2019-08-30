@@ -5,7 +5,6 @@ import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 import { Container, Col, Row } from "../../components/Grid";
 import UserCard from "../../components/UserCard";
-import "./Search.css";
 
 class Search extends Component {
   state = {

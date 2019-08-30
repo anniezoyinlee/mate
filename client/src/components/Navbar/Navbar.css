@@ -1,17 +1,8 @@
-.bg-info {
-    background-color: #dbad58!important;
-}
-
-.appname {
+.title {
     color: white;
-    margin: 0px 30px 0px 30px;
-    font-size: 35px;
-    font-family: 'Shadows Into Light', cursive;
+    margin-right: 20px;
 }
 
-.tab {
-    font-size: 25px;
-    padding: 10px;
-    margin-left: 90px;
-    font-family: 'Cinzel', serif;
+.nav-link {
+    font-family: 'Poppins', sans-serif;
 }
