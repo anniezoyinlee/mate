@@ -14,12 +14,18 @@ export default {
     console.log(data);
     return axios.post("/user/new", data);
   },
-  // Delete a book from the database
-  deleteUser: function(id) {
-    return axios.delete("/api/saved/" + id);
-  },
   addFriend: function(id) {
     return axios.post("/user/addfriend", { id: id }).then(data => {
+      return data;
+    });
+  },
+  getMates: function() {
+    return axios.get("/user/mates").then(data => {
+      return data;
+    });
+  },
+  deleteMate: function(id) {
+    return axios.post("/user/mates", { id: id }).then(data => {
       return data;
     });
   }

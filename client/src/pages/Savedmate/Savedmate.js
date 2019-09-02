@@ -1,84 +1,79 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
-import Navbar from "../../components/Navbar";
 import API from "../../utils/API";
+import { Input, FormBtn } from "../../components/Form";
 import { Container, Col, Row } from "../../components/Grid";
-import { List, ListItem } from "../../components/List"; 
+import UserCard from "../../components/UserCard";
 
-class Saved extends Component {
-    state = {
-        book: {}
-      };
+class Search extends Component {
+  state = {
+    users: [],
+    currentUser: ""
+  };
 
-    componentDidMount() {
-        this.loadBook()
-    }
+  componentDidMount = () => {
+    API.getMates().then(res => this.setState({ users: res.data }));
+  };
 
-    handleDeleteBook = async id => {
-        // console.log(id)
-        await API.deleteBook(id)
-          .then(res => {
-              this.loadBook()
-              window.location.reload();
-            })
-          .catch(err => console.log(err));
-    };
+  updateMates = () => {
+    API.getMates().then(res => this.setState({ users: res.data }));
+  };
 
-    loadBook = () => {
-        API.getBook()
-        .then(res => {
-            console.log(res.data)
-            this.setState({
-                book: res.data,
-                title: res.data.title, 
-                author: res.data.author,
-                description: res.data.description,
-                link: res.data.link,
-                image: res.data.image 
-            })
-        })
-    }
+  handleDelete = id => {
+    console.log(id);
+    API.deleteMate(id).then(data => {
+      console.log(data);
+      this.updateMates();
+      alert("This person is no longer your mate :(");
+    });
+  };
 
-    render() {
-        return (
-            <div>
-                <Navbar />
-                <Jumbotron 
-                    message="Saved Books"
-                />
+  handleChat = () => {};
+
+  render() {
+    return (
+      <div>
+        <Container>
+          <Row>
+            <Col size="md-12">
+              <form>
                 <Container>
-                    <h4>Saved Books:</h4>
-                    <br></br>
-                    {/* Since the correct information is not being fetched from the database, the list of saved books never renders */}
-                    {this.state.book.length ? (
-                        <Row>
-                            <Col size="xs-12">
-                                <List>
-                                    {this.state.book.map(mybook => (
-                                        <ListItem 
-                                            key={mybook._id}
-                                            id={mybook._id}
-                                            title={mybook.title}
-                                            author={mybook.author}
-                                            description={mybook.description}
-                                            image={mybook.image}
-                                            link={mybook.link}
-                                            buttonName="Delete"
-                                            click={() => this.handleDeleteBook(mybook._id)}
-                                            >
-                                        </ListItem>
-                                    ))}
-                                </List>
-                            </Col>
-                        </Row>
-                    ) : (
-                        <h5>No Saved Books. Pleases Select a Book to Save.</h5>
-                    )}
-                    
+                  <Row>
+                    <Col size="xs-9 sm-10">
+                      <Input
+                        name="bookSearch"
+                        onChange={this.handleInput}
+                        placeholder="Search for a shop or mate"
+                      />
+                    </Col>
+                    <Col size="xs-3 sm-2">
+                      <FormBtn onClick={this.handleSubmitBook} />
+                    </Col>
+                  </Row>
                 </Container>
-            </div>
-        )
-    }
+              </form>
+            </Col>
+          </Row>
+          <br />
+          <Container>
+            <h4>My Mates</h4>
+            <Row>
+              {this.state.users.map(user => {
+                return (
+                  <Col size="xs-12 sm-6 md-3" key={user.id}>
+                    <UserCard
+                      info={user}
+                      handleMate={this.handleDelete}
+                      friends="Delete"
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
+          </Container>
+        </Container>
+      </div>
+    );
+  }
 }
 
-export default Saved;
+export default Search;

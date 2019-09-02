@@ -13,8 +13,8 @@ import "./UserCard.css";
 
 class UserCard extends React.Component {
   state = {};
-  addFriend = () => {
-    this.props.handleAdd(this.props.info.id);
+  addOrDelete = () => {
+    this.props.handleMate(this.props.info.id);
   };
 
   render() {
@@ -39,7 +39,7 @@ class UserCard extends React.Component {
                 <Button>Chat</Button>
               </Col>
               <Col md="6">
-                <Button onClick={this.addFriend}>Add</Button>
+                <Button onClick={this.addOrDelete}>{this.props.friends}</Button>
               </Col>
             </Row>
           </CardBody>

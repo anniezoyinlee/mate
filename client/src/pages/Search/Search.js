@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
-import Navbar from "../../components/Navbar";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 import { Container, Col, Row } from "../../components/Grid";
@@ -18,7 +16,13 @@ class Search extends Component {
 
   handleAdd = id => {
     console.log(`friend id is ${id}`);
-    API.addFriend(id).then(data => console.log(data));
+    API.addFriend(id).then(data => {
+      if (!data.data) {
+        alert("This person is already your mate!");
+      } else {
+        alert("User added to mates!");
+      }
+    });
   };
 
   handleChat = () => {};
@@ -26,8 +30,6 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <Jumbotron />
         <Container>
           <Row>
             <Col size="md-12">
@@ -55,8 +57,13 @@ class Search extends Component {
             <Row>
               {this.state.users.map(user => {
                 return (
-                  <Col size="xs-12 sm-6 md-3">
-                    <UserCard info={user} handleAdd={this.handleAdd} />
+                  <Col size="xs-12 sm-6 md-3" key={user.id}>
+                    <UserCard
+                      key={user.id}
+                      info={user}
+                      handleMate={this.handleAdd}
+                      friends="Add"
+                    />
                   </Col>
                 );
               })}

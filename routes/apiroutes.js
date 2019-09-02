@@ -23,36 +23,43 @@ module.exports = function(app) {
   app.post("/user/addfriend", function(req, res) {
     console.log(`adding friend ${req.body.id} to list!`);
     db.favorites
-      .create({ filter: req.body.id })
-      .then(result => {
-        res.json(result);
+      .findOne({
+        where: {
+          filter: req.body.id
+        }
       })
-      .catch(err => console.log(err));
+      .then(result => {
+        if (!result) {
+          db.favorites
+            .create({ filter: req.body.id })
+            .then(response => {
+              res.json(response);
+            })
+            .catch(err => console.log(err));
+        } else {
+          console.log(result.dataValues);
+          res.send(false);
+        }
+      });
+  });
+
+  app.get("/user/mates", function(req, res) {
+    db.favorites.findAll({}).then(data => {
+      res.json(data);
+    });
+  });
+
+  app.post("/user/mates", function(req, res) {
+    console.log(`DELETING USER ID ${req.body.id}`);
+    db.favorites
+      .destroy({
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(response => {
+        console.log(response);
+        res.json(response);
+      });
   });
 };
-
-// router.route("/user/create").post(function(req, res) {
-//   db.user
-//     .create({
-//       name: req.body.name,
-//       image: req.body.image
-//     })
-//     .then(function(data) {
-//       res.json(data);
-//     })
-//     .catch(err => console.log(err));
-// });
-
-// // Matches with "/api/books"
-// router
-//   .route("/books/")
-//   .get(booksController.search)
-//   .post(booksController.create);
-
-// // Matches with "/api/saved/:id"
-// router
-//   .route("/saved/:id")
-//   .get(booksController.search)
-//   .put(booksController.update)
-//   .delete(booksController.delete)
-//   .post(booksController.create);
