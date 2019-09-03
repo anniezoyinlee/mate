@@ -26,9 +26,9 @@ render(){
       </Switch>
     </div>
   </Router>
-};
   )
 }
   
+}
 
 export default App;
