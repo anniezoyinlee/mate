@@ -12,10 +12,10 @@ const App = () => (
       <Navbar />
       <Jumbotron />
       <Switch>
-        <Route exact path="/" component={Search} />
-        <Route exact path="/search" component={Search} />
-        <Route exact path="/mate" component={Savedmate} />
-        <Route exact path="/profile" component={Profile} />
+        <Route path="/" component={Search} />
+        <Route path="/search" component={Search} />
+        <Route path="/mate" component={Savedmate} />
+        <Route path="/profile" component={Profile} />
       </Switch>
     </div>
   </Router>
