@@ -6,8 +6,15 @@ import Profile from "./pages/Profile";
 import Jumbotron from "./components/Jumbotron";
 import Navbar from "./components/Navbar";
 
-const App = () => (
-  <Router>
+class App extends React.Components {
+static propTypes = {
+ children: PropTypes.node
+}
+
+render(){
+  const {children} = this.props
+  return(
+    <Router>
     <div>
       <Navbar />
       <Jumbotron />
@@ -19,6 +26,9 @@ const App = () => (
       </Switch>
     </div>
   </Router>
-);
+};
+  )
+}
+  
 
 export default App;
