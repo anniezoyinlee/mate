@@ -7,14 +7,10 @@ import Jumbotron from "./components/Jumbotron";
 import Navbar from "./components/Navbar";
 
 class App extends React.Components {
-static propTypes = {
- children: PropTypes.node
-}
 
 render(){
-  const {children} = this.props
   return(
-    <Router>
+    <Router basename="/">
     <div>
       <Navbar />
       <Jumbotron />
