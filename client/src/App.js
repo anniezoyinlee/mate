@@ -16,7 +16,6 @@ const App = () => (
         <Route exact path="/search" component={Search} />
         <Route exact path="/mate" component={Savedmate} />
         <Route exact path="/profile" component={Profile} />
-        <Route component={NoMatch} />
       </Switch>
     </div>
   </Router>
