@@ -6,25 +6,38 @@ import Profile from "./pages/Profile";
 import Jumbotron from "./components/Jumbotron";
 import Navbar from "./components/Navbar";
 
-class App extends React.Components {
+class App extends React.Component {
+  state = {
+    page: "root"
+  };
 
-render(){
-  return(
-    <Router basename="/">
-    <div>
-      <Navbar />
-      <Jumbotron />
-      <Switch>
-        <Route exact path="/" component={Search} />
-        <Route exact path="/search" component={Search} />
-        <Route exact path="/mate" component={Savedmate} />
-        <Route exact path="/profile" component={Profile} />
-      </Switch>
-    </div>
-  </Router>
-  )
-}
-  
+  handleSetPage = page => {
+    this.setState({ page: page });
+  };
+
+  render() {
+    return (
+      // <Router basename="*">
+      <div>
+        <Navbar handleSetPage={this.handleSetPage} />
+        <Jumbotron />
+        {/* <Switch> */}
+        {this.state.page === "root" ? (
+          <Search></Search>
+        ) : this.state.page === "saved" ? (
+          <Savedmate></Savedmate>
+        ) : (
+          <Profile></Profile>
+        )}
+        {/* <Route exact path="/" component={Search} />
+          <Route path="/search" component={Search} />
+          <Route path="/mate" component={Savedmate} />
+          <Route path="/profile" component={Profile} /> */}
+        {/* </Switch> */}
+      </div>
+      // </Router>
+    );
+  }
 }
 
 export default App;

@@ -13,9 +13,13 @@ import "./UserCard.css";
 
 class UserCard extends React.Component {
   state = {};
+
   addOrDelete = () => {
     this.props.handleMate(this.props.info.id);
   };
+
+  sendAlert = () =>
+    alert("This function will only be available to paid subscribers!");
 
   render() {
     return (
@@ -30,13 +34,10 @@ class UserCard extends React.Component {
           />
           <CardBody>
             <CardTitle>{this.props.info.name}</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
+            <CardText>Hello, my name is {this.props.info.name}!</CardText>
             <Row>
               <Col md="6">
-                <Button>Chat</Button>
+                <Button onClick={this.sendAlert}>Chat</Button>
               </Col>
               <Col md="6">
                 <Button onClick={this.addOrDelete}>{this.props.friends}</Button>

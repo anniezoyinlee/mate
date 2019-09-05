@@ -1,8 +1,12 @@
 .title {
-    color: white;
-    margin-right: 20px;
+  color: white;
+  margin-right: 20px;
 }
 
 .nav-link {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav-item {
+  cursor: pointer;
 }

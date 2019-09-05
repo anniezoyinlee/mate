@@ -40,13 +40,13 @@ class Search extends Component {
                   <Row>
                     <Col size="xs-9 sm-10">
                       <Input
-                        name="bookSearch"
+                        name="Search"
                         onChange={this.handleInput}
                         placeholder="Search for a shop or mate"
                       />
                     </Col>
                     <Col size="xs-3 sm-2">
-                      <FormBtn onClick={this.handleSubmitBook} />
+                      <FormBtn />
                     </Col>
                   </Row>
                 </Container>
