@@ -34,7 +34,7 @@ class Navbar extends React.Component {
           </li>
           <li className="nav-item active tab">
             <a onClick={this.handleClick} data={"profile"} className="nav-link">
-              Profile
+              Create Profile
             </a>
           </li>
         </ul>
