@@ -1,3 +1,9 @@
 .btn {
   width: 100%;
 }
+
+.btn-info {
+  color: #fff;
+  background-color: #da8c68;
+  border-color: #b84a17a8;
+}

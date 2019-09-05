@@ -1,7 +1,7 @@
 .jumbotron {
   height: 600px;
   text-align: center;
-  background: url("../../images/annie_mate.jpg") no-repeat center center;
+  background: url("../../images/coffee.tea.mate.png") no-repeat center center;
   background-size: 70%;
   background-repeat: no-repeat;
   padding: 0;
@@ -9,6 +9,6 @@
 }
 
 h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Pacifico', cursive;
   color: black;
 }

@@ -19,20 +19,20 @@ class Navbar extends React.Component {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active title">
             <a className="nav-link">
-              <h5>Find Me A Mate</h5>
+              <h5 className="appname">Coffee . Tea . Mate</h5>
             </a>
           </li>
-          <li className="nav-item active">
+          <li className="nav-item active tab">
             <a onClick={this.handleClick} data={"root"} className="nav-link">
               Search
             </a>
           </li>
-          <li className="nav-item active">
+          <li className="nav-item active tab">
             <a onClick={this.handleClick} data={"saved"} className="nav-link">
               My Mates
             </a>
           </li>
-          <li className="nav-item active">
+          <li className="nav-item active tab">
             <a onClick={this.handleClick} data={"profile"} className="nav-link">
               Profile
             </a>
