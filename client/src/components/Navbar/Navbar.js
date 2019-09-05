@@ -24,7 +24,7 @@ class Navbar extends React.Component {
           </li>
           <li className="nav-item active tab">
             <a onClick={this.handleClick} data={"root"} className="nav-link">
-              Search
+              Find A Mate
             </a>
           </li>
           <li className="nav-item active tab">

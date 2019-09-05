@@ -42,7 +42,7 @@ class Search extends Component {
                       <Input
                         name="Search"
                         onChange={this.handleInput}
-                        placeholder="Search for a shop or mate"
+                        placeholder="Find your mate"
                       />
                     </Col>
                     <Col size="xs-3 sm-2">

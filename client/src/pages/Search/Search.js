@@ -42,7 +42,7 @@ class Search extends Component {
                       <Input
                         name="Search"
                         onChange={this.handleInput}
-                        placeholder="Search for a shop or mate"
+                        placeholder="Find a mate"
                       />
                     </Col>
                     <Col size="xs-3 sm-2">
@@ -55,7 +55,7 @@ class Search extends Component {
           </Row>
           <br />
           <Container>
-            <h4>Search Results:</h4>
+            <h4>Mates Around You:</h4>
             <Row>
               {this.state.users.map(user => {
                 return (
