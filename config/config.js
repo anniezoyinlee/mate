@@ -2,10 +2,10 @@ module.exports = {
   development: {
     username: "root",
     password: "root",
-    database: "annie_project",
+    database: "mate",
     host: "localhost",
     dialect: "mysql",
-    PORT: 3306
+    PORT: 8889
   },
   test: {
     username: "root",
