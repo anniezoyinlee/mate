@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Search from "./pages/Search";
 import Savedmate from "./pages/Savedmate";
 import Profile from "./pages/Profile";
@@ -17,11 +16,9 @@ class App extends React.Component {
 
   render() {
     return (
-      // <Router basename="*">
       <div>
         <Navbar handleSetPage={this.handleSetPage} />
         <Jumbotron />
-        {/* <Switch> */}
         {this.state.page === "root" ? (
           <Search></Search>
         ) : this.state.page === "saved" ? (
@@ -29,13 +26,7 @@ class App extends React.Component {
         ) : (
           <Profile></Profile>
         )}
-        {/* <Route exact path="/" component={Search} />
-          <Route path="/search" component={Search} />
-          <Route path="/mate" component={Savedmate} />
-          <Route path="/profile" component={Profile} /> */}
-        {/* </Switch> */}
       </div>
-      // </Router>
     );
   }
 }
