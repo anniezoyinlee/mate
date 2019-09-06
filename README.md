@@ -3,9 +3,14 @@
 Deploy
 Heroku: https://project3-mate.herokuapp.com/
 
-IDEA
-For single people to find a mate in a safe place in coffee shop or tea house
-Spending time in coffee shop/tea house alone but feel bored, use this app to make some new friends
+Problems + Ideas
+It’s hard to make friends in public areas, people tend to use applications to make friends
+Compare with other dating app might have problems like 
+People only wants to meet in bars/personal places
+People disappeared after chatting for a while
+Lazy to meet up, don’t know where to meet
+This app can fix the problems, use it in coffee shop/tea house you will know people in the same space who also wants to make friends, and will be a safe place to make friend with strangers
+
 
 Tech 
 ReactJS
